@@ -27,7 +27,7 @@ if($exists>0){
             header("location: home.php");
         }
     }else{
-        #Print '<script>alert("Incorrect Password!");</script>'; 
+        Print '<script>alert("Incorrect Password!");</script>'; 
         Print '<script>window.location.assign("login.php");</script>';
     }
 }else{
