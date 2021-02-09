@@ -24,8 +24,8 @@
         echo "connected";
     }
     if($_SERVER['REQUEST_METHOD']=="POST"){
-        $username=$_POST['username'];
-        $password=$_POST['password'];
+        $username=mysqli_real_escape_string($mysqli,$_POST['username']);
+        $password=mysqli_real_escape_string($mysqli,$_POST['password']);
         echo "Username Entered is: ". $username."<br/>";
         echo "Password Entered is: ". $password."<br/>";
 

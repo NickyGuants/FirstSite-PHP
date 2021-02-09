@@ -7,7 +7,7 @@
     <title>My first Php website</title>
 </head>
 <body>
-    <h2>Registration page</h2>
+    <h2>Login</h2>
     <a href="index.php">Home</a> <br><br>
     <form action="checklogin.php" method="POST">
         Enter Username: <input type="text" name="username" required="required"><br>
