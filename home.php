@@ -14,6 +14,10 @@ if($_SESSION['user']){
     header("location: index.php");
 }
 $user=$_SESSION['user'];
+$mysqli=mysqli_connect("localhost","root","","first_db");
+if(mysqli_connect_errno()){
+    echo "Failed to connect to the database:". mysqli_connect_error();
+}
 ?>
 <body>
     <h2>Home Page</h2>
@@ -29,9 +33,29 @@ $user=$_SESSION['user'];
         <tr>
             <th>Id</th>
             <th>Details</th>
+            <th>Post Time</th>
+            <th>Edit Time</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Public Post</th>
         </tr>
+        <?php
+        $query=mysqli_query($mysqli,"SELECT * from list");
+        while($row=mysqli_fetch_array($query)){
+            Print "<tr>";
+                Print '<td align="center">'. $row['ID'] . "</td>";
+                Print '<td align="center">'. $row['details'] . "</td>";
+                Print '<td align="center">'. $row['date_posted'] . 
+                    " - " . $row['time_posted'] . "</td>";
+                Print '<td align="center">'. $row['date_edited'] . 
+                    " - " . $row['time_edited'] ."</td>";
+                Print '<td align="center"><a href="edit.php">edit</a> </td>';
+                Print '<td align="center"><a href="delete.php">delete</a> </td>';
+                Print '<td align="center">'. $row['public'] . "</td>";
+            Print "</tr>";
+        }
+
+        ?>
     </table>
 </body>
 </html>

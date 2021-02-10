@@ -3,8 +3,6 @@ session_start();
 $mysqli=mysqli_connect("localhost","root", "","first_db");
 if(mysqli_connect_errno()){
     echo "Failed to connect to the database:". mysqli_connect_error();
-}else{
-    echo "connected";
 }
 $username=mysqli_real_escape_string($mysqli,$_POST['username']);
 $password=mysqli_real_escape_string($mysqli,$_POST['password']);
