@@ -34,11 +34,12 @@ if(mysqli_connect_errno()){
             <th>Public Post</th>
 		</tr>
         <?php
-            $mysqli=mysqli_connect("localhost", "root", "","first_db");
             if(!empty($def['ID'])){
-                $id=$_GET['ID'];
-                $_SESSION['ID']=$id;
+                $ID=$_GET['ID'];
+                $_SESSION['ID']=$ID;
+                echo $ID;
                 $id_exists=true;
+                $mysqli=mysqli_connect("localhost", "root", "","first_db");
                 $query=mysqli_query($mysqli,"SELECT * from list");
                 $count=mysqli_num_rows($query);
                 if($count>0){
@@ -61,7 +62,7 @@ if(mysqli_connect_errno()){
     </table>
     <br>
     <?php
-        if($id_exists){
+        if(isset($id_exists)){
             Print '
             <form action="edit.php" method="post">
                 Enter new detail: <input type="text" name="details"/><br/> 
@@ -81,7 +82,7 @@ if(mysqli_connect_errno()){
       $mysqli=mysqli_connect("localhost", "root", "","first_db");
       $details = mysqli_real_escape_string($mysqli,$_POST['details']);
       $public = "no";
-      $id = $_SESSION['ID'];
+      $ID = $_SESSION['ID'];
       $time = strftime("%X"); //time
       $date = strftime("%B %D, %Y"); //date
 
